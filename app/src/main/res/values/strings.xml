@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Procrastination - Visual Novel</string>
+    <string name="start_phrase">Для начала нажмите на экран!</string>
+    <string name="pers_name">Имя персонажа</string>
+    <string name="ad_unit_id">ca-app-pub-6879867252477324/6803358791</string>
+    <string name="ad_unit_id_test">ca-app-pub-3940256099942544/5224354917</string>
+</resources>

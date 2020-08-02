@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ViewFlipper
+        android:id="@+id/viewFlipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:autoStart="true"
+        android:flipInterval="2500">
+
+        <ImageView
+            android:id="@+id/comic1"
+            style="@style/IntroComicItem"
+            android:src="@drawable/comic1" />
+
+        <ImageView
+            android:id="@+id/comic2"
+            style="@style/IntroComicItem"
+            android:src="@drawable/comic2" />
+
+        <ImageView
+            android:id="@+id/comic3"
+            style="@style/IntroComicItem"
+            android:src="@drawable/comic3" />
+
+        <ImageView
+            android:id="@+id/comic4"
+            style="@style/IntroComicItem"
+            android:src="@drawable/comic4" />
+
+        <ImageView
+            android:id="@+id/comic5"
+            style="@style/IntroComicItem"
+            android:src="@drawable/comic5" />
+
+        <ImageView
+            android:id="@+id/comic6"
+            style="@style/IntroComicItem"
+            android:src="@drawable/comic6" />
+
+        <ImageView
+            android:id="@+id/comic7"
+            style="@style/IntroComicItem"
+            android:src="@drawable/comic7" />
+
+    </ViewFlipper>
+
+</LinearLayout>

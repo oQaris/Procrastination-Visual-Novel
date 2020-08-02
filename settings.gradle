@@ -1,0 +1,2 @@
+rootProject.name='Procrastination - Visual Novel'
+include ':app'

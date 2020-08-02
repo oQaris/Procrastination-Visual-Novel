@@ -1,0 +1,41 @@
+{
+  "project_info": {
+    "project_number": "828690250768",
+    "firebase_url": "https://procrastination---visual-c1e9d.firebaseio.com",
+    "project_id": "procrastination---visual-c1e9d",
+    "storage_bucket": "procrastination---visual-c1e9d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:828690250768:android:c4dd9f8b553317c9d89e95",
+        "android_client_info": {
+          "package_name": "com.pryanik.procrastination"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "828690250768-tu1pmjil790vav0h4tjaak6tippkajt3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOJJ2rJrE32XHQ1_wfEVoGwJQbccPu4DY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "828690250768-tu1pmjil790vav0h4tjaak6tippkajt3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-6879867252477324~1943921963"
+    }
+  ],
+  "configuration_version": "1"
+}
