@@ -16,9 +16,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class SaveAdapter extends ArrayAdapter<SaveItem> {
-    private LayoutInflater inflater;
-    private int layout;
-    private List<SaveItem> states;
+    private final LayoutInflater inflater;
+    private final int layout;
+    private final List<SaveItem> states;
 
     public SaveAdapter(Context context, int resource, List<SaveItem> states) {
         super(context, resource, states);

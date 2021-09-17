@@ -7,9 +7,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 public class SaveItem {
-    private String str;
-    private String subStr;
-    private Bitmap picture;
+    private final String str;
+    private final String subStr;
+    private final Bitmap picture;
 
     public SaveItem(String str, String subStr, Bitmap picture) {
         this.str = str;

@@ -4,4 +4,16 @@
     <string name="pers_name">Имя персонажа</string>
     <string name="ad_unit_id">ca-app-pub-6879867252477324/6803358791</string>
     <string name="ad_unit_id_test">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="save_load_txt">Сохранение / Загрузка</string>
+    <string name="Settings_txt">Настройки</string>
+    <string name="Volume_txt">Громкость\nмузыки</string>
+    <string name="init_percent_volume">50%</string>
+    <string name="Volume_sound_txt">Громкость\nзвука</string>
+    <string name="mute_txt">Без звука</string>
+    <string name="text_rate">Скорость\nвывода текста</string>
+    <string name="init_text_rate">20 мс/символ</string>
+    <string name="auto_save_txt">Авто-сохранение</string>
 </resources>

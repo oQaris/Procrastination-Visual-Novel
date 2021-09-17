@@ -13,7 +13,7 @@ public class Sprite implements IEvent, Serializable {
     private final int height;
     private final int width;
 
-    Sprite(String src, String feel, Float pos, Boolean act, int height, int width) {
+    public Sprite(String src, String feel, Float pos, Boolean act, int height, int width) {
         this.src = src;
         this.feel = feel;
         this.pos = pos;

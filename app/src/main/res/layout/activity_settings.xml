@@ -5,16 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/start_screen_background"
-    tools:context=".SettingsActivity">
+    tools:context=".activities.SettingsActivity">
 
     <TextView
         android:id="@+id/txt_settings_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Настройки"
+        android:text="@string/Settings_txt"
         android:textColor="@color/white"
-        android:textSize="26sp"
+        android:textSize="@dimen/large_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,9 +24,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:text="Громкость\nмузыки"
+        android:text="@string/Volume_txt"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="@dimen/middle_text_size"
         app:layout_constraintBottom_toTopOf="@id/txt_rate"
         app:layout_constraintEnd_toStartOf="@+id/seek_music"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@
         android:id="@+id/txt_music_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="50%"
+        android:text="@string/init_percent_volume"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/seek_music"
@@ -59,9 +59,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:text="Громкость\nзвука"
+        android:text="@string/Volume_sound_txt"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="@dimen/middle_text_size"
         app:layout_constraintBottom_toTopOf="@id/txt_rate"
         app:layout_constraintEnd_toStartOf="@id/seek_sound"
         app:layout_constraintStart_toEndOf="@+id/seek_music"
@@ -83,22 +83,33 @@
         android:id="@+id/txt_sound_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="50%"
+        android:text="@string/init_percent_volume"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/seek_sound"
         app:layout_constraintEnd_toEndOf="@+id/seek_sound"
         app:layout_constraintStart_toStartOf="@+id/seek_sound" />
 
+    <CheckBox
+        android:id="@+id/ch_mute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:checked="false"
+        android:text="@string/mute_txt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_sound" />
+
     <TextView
         android:id="@+id/txt_rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:text="Скорость\nвывода текста"
+        android:text="@string/text_rate"
         android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/sw_ads"
+        android:textSize="@dimen/middle_text_size"
+        app:layout_constraintBottom_toTopOf="@id/sw_auto_save"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_music" />
 
@@ -108,21 +119,21 @@
         android:layout_height="wrap_content"
         android:max="100"
         android:progress="20"
-        app:layout_constraintBottom_toTopOf="@id/sw_ads"
+        app:layout_constraintBottom_toTopOf="@id/sw_auto_save"
         app:layout_constraintEnd_toEndOf="@+id/seek_music"
         app:layout_constraintStart_toEndOf="@+id/txt_rate"
-        app:layout_constraintTop_toBottomOf="@+id/seek_music" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_music" />
 
     <TextView
         android:id="@+id/txt_rate_val"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="20 мс/символ"
+        android:text="@string/init_text_rate"
         android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/sw_ads"
+        android:textSize="@dimen/middle_text_size"
+        app:layout_constraintBottom_toTopOf="@id/sw_auto_save"
         app:layout_constraintStart_toEndOf="@id/seek_rate"
-        app:layout_constraintTop_toBottomOf="@+id/seek_music" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_sound" />
 
     <!--<TextView
         android:id="@+id/txt_ads"
@@ -131,16 +142,57 @@
         android:text="Рекламные ролики"/>-->
 
     <Switch
-        android:id="@+id/sw_ads"
+        android:id="@+id/sw_auto_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:checked="true"
-        android:text="Рекламные ролики"
+        android:text="@string/auto_save_txt"
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="@dimen/middle_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_rate" />
+
+    <!--<CheckBox
+        android:id="@+id/ch_sv_every"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:checked="true"
+        android:text="Сохранять каждые"
+        app:layout_constraintBottom_toTopOf="@+id/ch_sv_choices"
+        app:layout_constraintStart_toEndOf="@+id/sw_ads"
+        app:layout_constraintTop_toBottomOf="@+id/txt_rate" />
+
+    <CheckBox
+        android:id="@+id/ch_sv_choices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:checked="true"
+        android:text="Сохранять после выборов"
+        app:layout_constraintBottom_toTopOf="ch_sv_notification"
+        app:layout_constraintStart_toEndOf="@+id/sw_ads"
+        app:layout_constraintTop_toBottomOf="@+id/ch_sv_every" />
+
+    <CheckBox
+        android:id="@+id/ch_sv_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:checked="true"
+        android:text="Уведомление о сохранении"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sw_ads"
+        app:layout_constraintTop_toBottomOf="@+id/ch_sv_choices" />-->
+
+    <Button
+        android:id="@+id/btn_interface_custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Настроить\nинтерфейс"
+        app:layout_constraintBottom_toBottomOf="@+id/sw_auto_save"
+        app:layout_constraintEnd_toEndOf="@+id/ch_mute" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

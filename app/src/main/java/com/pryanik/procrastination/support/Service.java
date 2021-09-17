@@ -27,9 +27,14 @@ import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
+import java.util.List;
 
 public class Service {
     public static RewardedAd rewardedAd;
+
+    private Service() {
+        throw new UnsupportedOperationException();
+    }
 
     public static void showErrorDialog(Activity activity, String error) {
         final AlertDialog aboutDialog = new AlertDialog.Builder(activity)
@@ -60,6 +65,15 @@ public class Service {
         );
     }
 
+    @NotNull
+    public static String merger(@NotNull List<String> list) {
+        StringBuilder stb = new StringBuilder(list.size());
+        for (String str : list) {
+            stb.append(" ").append(str);
+        }
+        return stb.deleteCharAt(0).toString();
+    }
+
     public static void serialize(Object obj, File f) throws IOException {
         try (ObjectOutput out = new ObjectOutputStream(
                 new BufferedOutputStream(new FileOutputStream(f)))) {
@@ -78,22 +92,6 @@ public class Service {
     public static RewardedAd createAndLoadRewardedAd(Context context, String adUnitId) {
         RewardedAd rewardedAd = new RewardedAd(context, adUnitId);
         RewardedAdLoadCallback adLoadCallback = new RewardedAdLoadCallback() {
-            @Override
-            public void onRewardedAdLoaded() {
-                // Ad successfully loaded.
-            }
-
-            @Override
-            public void onRewardedAdFailedToLoad(int errorCode) {
-                if (errorCode == AdRequest.ERROR_CODE_NETWORK_ERROR)
-                    Toast.makeText(context,
-                            "Отсутствует подключение к сети!", Toast.LENGTH_SHORT).show();
-                else if (errorCode == AdRequest.ERROR_CODE_NO_FILL)
-                    Toast.makeText(context,
-                            "Вы посмотрели всю доступную рекламу!", Toast.LENGTH_SHORT).show();
-                /*else Toast.makeText(context,
-                            "Что-то пошло не так, попробуйте позже...", Toast.LENGTH_SHORT).show();*/
-            }
         };
         rewardedAd.loadAd(new AdRequest.Builder().build(), adLoadCallback);
         return rewardedAd;
@@ -118,13 +116,6 @@ public class Service {
                 @Override
                 public void onUserEarnedReward(@NonNull RewardItem reward) {
                     // Тут вознаграждение
-                }
-
-                @Override
-                public void onRewardedAdFailedToShow(int errorCode) {
-                    // В случае ошибки
-                    Toast.makeText(activity,
-                            "Какая то ошибка!", Toast.LENGTH_SHORT).show();
                 }
             };
             rewardedAd.show(activity, adCallback);

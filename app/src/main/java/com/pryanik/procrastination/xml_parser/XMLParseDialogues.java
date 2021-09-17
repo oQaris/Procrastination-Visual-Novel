@@ -73,6 +73,7 @@ public class XMLParseDialogues {
     private class XMLHandler extends DefaultHandler {
         Set<String> setId;
         StringBuilder phrase;
+        String prewId;
         Node curNode;
         Choice curChoice;
         String curBranch;
@@ -201,16 +202,16 @@ public class XMLParseDialogues {
                 int preLen = setId.size();
                 setId.add(id);
                 if (preLen == setId.size())
-                    throw new IllegalArgumentException("Невозможно создание блоков node с одинаковыми id=" + id);
+                    throw new IllegalArgumentException("Невозможно создание блоков node с одинаковыми ID=" + id);
                 if (id.equals(ENTRY))
                     isHaveStart = true;
-            }
+                prewId = id;
+            } else if (aboveIsNext) //TODO: опработать над ошибками
+                throw new IllegalArgumentException("Недостижимый код ниже ветке с ID=" + prewId);
             // Next
-            //TODO: опработать над ошибками
-            else if (aboveIsNext)
-                throw new IllegalArgumentException("Недостижимый код!");
+            //todo проверка на переход в несуществующий node
             String next = attributes.getValue("next");
-            aboveIsNext = next != null;
+            aboveIsNext = next != null && cond == null;
             // Pers
             String pers = attributes.getValue("pers");
             // Back
@@ -234,7 +235,7 @@ public class XMLParseDialogues {
                 curNode.addPhrase(normalPhrase(), events);
             // Choice
             if (curNode.getChoices() != null && curNode.getChoices().size() == MAX_NUM_CHOICE)
-                throw new IllegalArgumentException("Невозможно добавить больше " + MAX_NUM_CHOICE + " выборов!");
+                throw new IllegalArgumentException("Невозможно добавить больше " + MAX_NUM_CHOICE + " выборов! в ветке с ID=" + prewId);
             return new Choice(next, cond);
         }
 
@@ -242,13 +243,13 @@ public class XMLParseDialogues {
             // Src
             String src = attributes.getValue("src");
             if (src == null)
-                throw new IllegalArgumentException("У спрайтов обязательный атрибут src!");
+                throw new IllegalArgumentException("У спрайтов обязательный атрибут src! в ветке с ID=" + prewId);
             // Feel
             String feel = attributes.getValue("feel");
             if (feel == null)
-                throw new IllegalArgumentException("У спрайтов обязательный атрибут feel!");
+                throw new IllegalArgumentException("У спрайтов обязательный атрибут feel! в ветке с ID=" + prewId);
             if (Arrays.binarySearch(avlbSprites, src + "_" + feel + ".png") < 0)
-                throw new IllegalArgumentException("Несуществующий спрайт!");
+                throw new IllegalArgumentException("Несуществующий спрайт! в ветке с ID=" + prewId);
             // Pos
             String posStr = attributes.getValue("pos");
             Float pos = null;
@@ -256,7 +257,7 @@ public class XMLParseDialogues {
                 pos = Float.parseFloat(posStr);
             // Act
             String actStr = attributes.getValue("act");
-            Boolean act = actStr != null && Boolean.parseBoolean(actStr);
+            Boolean act = actStr == null || Boolean.parseBoolean(actStr); // по-умолчанию - true
             Sprite sprite = null;
             try {
                 Bitmap sp = BitmapFactory.decodeStream(manager.open("sprites/" + src + "_" + feel + ".png"));
